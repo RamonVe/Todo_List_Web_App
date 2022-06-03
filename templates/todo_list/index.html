@@ -15,7 +15,9 @@
             {% endfor %}
             <h2>Add Item</h2>
             <form action="add_todo/" method="post" class="form-inline">
-                <input type="text" name="content" class="form-control mb-2 mr-sm-2" placeholder="type here...">
+                <label>
+                    <input type="text" name="content" class="form-control mb-2 mr-sm-2" placeholder="type here...">
+                </label>
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>
         </div>
@@ -27,7 +29,7 @@
                 {% for todo_item in todo_items %}
                     <li class="list-group-item">{{ todo_item.text }} Added: {{ todo_item.added_date }}
                         <div class="float-right">
-                            <form action="delete_todo/{{ todo_item.id }}/" action="post">
+                            <form action="delete_todo/{{ todo_item.id }}/">
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
                         </div>
