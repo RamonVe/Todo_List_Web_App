@@ -27,5 +27,6 @@ def add_todo(request):
 
 @csrf_exempt
 def delete_todo(request, todo_id):
+    messages.success(request, "Todo deleted!")
     Todo.objects.get(id=todo_id).delete()
     return HttpResponseRedirect("/")
