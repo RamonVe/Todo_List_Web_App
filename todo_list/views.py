@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils import timezone
@@ -15,10 +16,11 @@ def index(request):
 def add_todo(request):
     current_date = timezone.now()
     content = request.POST["content"]
-    # TODO: Improve form validation
     if content == "":
+        messages.error(request, "Todo item is empty!")
         return HttpResponseRedirect("/")
     else:
+        messages.success(request, "Todo added!")
         Todo.objects.create(added_date=current_date, text=content)
         return HttpResponseRedirect("/")
 
